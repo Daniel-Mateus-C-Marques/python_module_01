@@ -2,12 +2,12 @@
 # ########################################################################### #
 #   shebang: 1                                                                #
 #                                                          :::      ::::::::  #
-#   ft_plant_growth.py                                   :+:      :+:    :+:  #
+#   ft_plant_factory.py                                  :+:      :+:    :+:  #
 #                                                      +:+ +:+         +:+    #
 #   By: danicamp <danicamp@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
-#   Created: 2026/06/19 14:59:06 by danicamp            #+#    #+#            #
-#   Updated: 2026/06/22 12:56:53 by danicamp           ###   ########.fr      #
+#   Created: 2026/06/22 13:03:57 by danicamp            #+#    #+#            #
+#   Updated: 2026/06/22 13:18:35 by danicamp           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -28,20 +28,23 @@ class Plant:
         self.plant_age += 1
 
 
-def ft_plant_growth() -> None:
-    print("=== Garden Plant Growth ===")
-    plant = Plant("Rose", 25.0, 30, 0.8)
-    plant_grow = plant.size_grow * 7
-    for i in range(8):
-        if i == 0:
-            plant.show()
-        else:
-            print(f"=== Day {i} ===")
-            plant.age()
-            plant.grow()
-            plant.show()
-    print(f"Growth this week: {plant_grow:.1f}cm")
+def ft_plant_factory() -> None:
+    plant1 = Plant("Rose", 25, 30, 0.8)
+    plant2 = Plant("Oak", 200, 365, 2.5)
+    plant3 = Plant("Cactus", 5, 90, 0.2)
+    plant4 = Plant("Sunflower", 80, 45, 0.6)
+    plant5 = Plant("Fern", 15, 120, 0.3)
+    print("Created: ", end="")
+    plant1.show()
+    print("Created: ", end="")
+    plant2.show()
+    print("Created: ", end="")
+    plant3.show()
+    print("Created: ", end="")
+    plant4.show()
+    print("Created: ", end="")
+    plant5.show()
 
 
 if __name__ == "__main__":
-    ft_plant_growth()
+    ft_plant_factory()
