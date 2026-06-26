@@ -7,7 +7,7 @@
 #   By: danicamp <danicamp@student.42porto.com>      +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/06/22 16:03:29 by danicamp            #+#    #+#            #
-#   Updated: 2026/06/22 17:26:40 by danicamp           ###   ########.fr      #
+#   Updated: 2026/06/24 14:42:28 by danicamp           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -63,7 +63,7 @@ class Flower(Plant):
         self.color = color
 
     def bloom(self) -> None:
-        print("[asking the rose to bloom]")
+        print("Rose is blooming beautifully!")
 
 
 class Tree(Plant):
@@ -79,7 +79,9 @@ class Tree(Plant):
         self.trunk_diameter = trunk_diameter
 
     def produce_shade(self) -> None:
-        print("[asking the oak to produce shade]")
+        print(f"Tree Oak now produces a shade of {self.height:.1f} "
+              f"long and {self.trunk_diameter:.1f} wide."
+              )
 
 
 class Vegetable(Plant):
@@ -90,21 +92,19 @@ class Vegetable(Plant):
         age: int,
         size_grow: float,
         harvest_season: str,
-        nutritional_value: int,
-        count: int
+        nutritional_value: float,
     ):
         super().__init__(name, height, age, size_grow)
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
-        self.count = count
 
     def age(self) -> None:
-        self.count += 1
         super().age()
+        self.nutritional_value += 0.5
 
     def grow(self) -> None:
-        self.count += 1
         super().grow()
+        self.nutritional_value += 0.5
 
 
 def ft_plant_types() -> None:
@@ -114,23 +114,31 @@ def ft_plant_types() -> None:
     flower.show()
     print(f"Color: {flower.color}")
     print("Rose has not bloomed yet")
-    flower.bloom()
+    print("[asking the rose to bloom]")
     flower.show()
     print(f"Color: {flower.color}")
-    print("Rose is blooming beautifully!")
+    flower.bloom()
     print("")
     print("=== Tree")
     tree = Tree("Oak", 200, 365, 1, 5)
+    tree.show()
     print(f"Trunk diameter: {tree.trunk_diameter:.1f}cm")
+    print("[asking the oak to produce shade]")
     tree.produce_shade()
-    print(f"Tree Oak now produces a shade of {tree.height:.1f} "
-          f"long and {tree.trunk_diameter:.1f} wide."
-          )
+
     print("")
-    vegetable = Vegetable("Tomato", 5, 10, 0.5, "April", 0, 0)
-    print(f"Harvest season: {vegetable.harvest_season}")
-    print(f"Nutritional value: {vegetable.nutritional_value}")
     print("=== Vegetable")
+    vegetable = Vegetable("Tomato", 5, 10, 2.1, "April", 0)
+    print(f"Harvest season: {vegetable.harvest_season}")
+    print(f"Nutritional value: {vegetable.nutritional_value:.0f}")
+    vegetable.show()
+    print("[make tomato grow and age for 20 days]")
+    for i in range(20):
+        vegetable.age()
+        vegetable.grow()
+    vegetable.show()
+    print(f"Harvest season: {vegetable.harvest_season}")
+    print(f"Nutritional value: {vegetable.nutritional_value:.0f}")
 
 
 if __name__ == "__main__":
